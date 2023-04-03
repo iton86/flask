@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 import pandas as pd
 
 app = Flask(__name__)
@@ -22,7 +22,8 @@ data = pd.read_csv("google_analytics_api_data.csv")
 def get_data_by_date(date):
     date = int(date)
     if date in list(data['date'].unique()):
-        return jsonify({date: data.query("date == @date")})
+        # return jsonify({date: data.query("date == @date")})
+        return Response(data.query("date == @date").to_json(orient="records"), mimetype='application/json')
     else:
         return jsonify({"error": "Data not found for date {}".format(date)}), 404    
     
