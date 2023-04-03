@@ -20,6 +20,7 @@ data = pd.read_csv("google_analytics_api_data.csv")
 
 @app.route('/data/<date>', methods=['GET'])
 def get_data_by_date(date):
+    date = int(date)
     if date in list(data['date'].unique()):
         return jsonify({date: data.query("date == @date")})
     else:
