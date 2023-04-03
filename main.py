@@ -3,13 +3,14 @@ import pandas as pd
 
 app = Flask(__name__)
 
-data = {
-    "2022-01-01": "Data for January 1st, 2022",
-    "2022-01-02": "Data for January 2nd, 2022",
-    "2022-01-03": "Data for January 3rd, 2022"
-}
+# data = {
+#     "2022-01-01": "Data for January 1st, 2022",
+#     "2022-01-02": "Data for January 2nd, 2022",
+#     "2022-01-03": "Data for January 3rd, 2022"
+# }
 
-data = pd.read_csv("google_analytics_api_data.csv")
+# data = pd.read_csv("google_analytics_api_data.csv")
+data = pd.read_csv("google_data_incremental.csv")
 
 # @app.route('/data/<date>', methods=['GET'])
 # def get_data_by_date(date):
